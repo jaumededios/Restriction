@@ -1,0 +1,382 @@
+%!TEX root = ../main.tex
+
+	\begin{thm}[Lemma 3.1 in {[Stovall], originally due to [Dendrinos\&Wright]}, complexified]
+	\label{lem:geometric_lemma}
+		Let $\gamma:\mathbb C \to \mathbb C^d$ be a polynomial curve of degree $N$, and assume $\Lambda^{(d)_\gamma} \not \equiv 0$, then we can split $\mathbb C \cup \{\infty\}$ into $M = O_{N}(1)$ non-overlapping triangles $\{T_j\}_{j=1}^M$ so that on each triangle $T_j$:
+		\begin{equation}
+		\label{eq:power_geometric_estimates}
+			|\Lambda_{\gamma'}^{(d)}(z)| \sim A_j |z-b_j|^{k_j}, \,\, and \,\, |\gamma'_1(t)|\sim B_j|z-b_j|^{l_j}
+		\end{equation}
+		and, for $z := (z_1, \dots z_d) \in T_j^d$:
+		\begin{equation}
+			\tag{DW}
+			\label{eq:hard_jacobian_estimate}
+			\left|\frac{J_{\gamma'}(z)}{v(z)}\right|\gtrsim_N \prod_{i=1}^d \Lambda^{(d)}_{\gamma'}(z_i)^{1/d}
+		\end{equation}
+		Moreover, for each triangle $T_j$ there is a closed, zero-measure set $R_j \subseteq T_j^d$ so that the sum map $\Sigma(z):=\sum_{i=1}^d \gamma(z_i)$ is $O_N(1)$-to-one in $T_j^d\setminus R_j$.
+	\end{thm}
+\todo[inline]{Schur polynomials are strictly column increasing weak row increasing.}
+
+
+	To simplify notation, and since the inequality we want to prove above concerns $\gamma'$ only and not $\gamma$, we will prove inequality \eqref{eq:hard_jacobian_estimate} for a generic curve $\gamma$ that will end up being the $\gamma'$ above.\\
+
+	The strategy to prove the theorem will be the following: First inequality \eqref{eq:hard_jacobian_estimate} will be shown for the moment curve, or for generalized moment curves (that is, curves that are affine equivalent to a curve of the form $(z_1^{\delta_1}, \dots z_1{^{\delta_d}}x)$). Then, we will show  that the result is in fact stable to suitable small perturbations of the polynomial. This, together with a compactness argument on $\mathbb C \cup \{\infty\}$, will give the non-uniform estimate (where the constant could depend on the polynomial). The only potential source of non-uniformity at this point will be the number of open sets, and finally we will show a stability on the number of open sets to use, and a compactness argument on the set of polynomials with coefficients $\lesssim 1$ will finish the proof.
+
+	\subsection{Preliminaries} % (fold)
+	\label{sub:prelim}
+
+	In this section we will define a systematic way of changing co-ordinates to polynomial curves to understand the behavior near a point, which we refer to as \textit{the zoom-in method} from now on. 
+
+	\begin{defi}
+		[Canonical form for a curve]
+		Let $\gamma = (\gamma_1, \dots \gamma_d)$ be a polynomial curve. Let $\delta_i$ be the lowest degree of a non-zero monomial in $\gamma_i$. Then $\gamma$ is in canonical form at zero if:
+
+		\begin{itemize}
+			\item $\delta_1< \dots < \delta_d$
+			\item The coefficient of degree $\delta_i$ in $\gamma_i$ is $1$.
+		\end{itemize}
+		similarly, that $\gamma$ is in canonical form at $c\in\mathbb C$ if $\gamma(z-c)$ is in canonical form at zero. The curve $\gamma$ is in canonical form at infinity if $z^D \gamma(z^{-1})$ is in canonical form at zero, where $D$ is the maximum of the degrees of $\gamma_i$.
+	\end{defi}
+
+	A polynomial admits a canonical form for every point if and only if the Jacobian for the curve is not the zero polynomial (that is, as long as the curves are linearly independent as polynomials). Given a polynomial $\gamma$, and a linear transformation $L\in GL(d;\mathbb C)$ so that $L \gamma$ is in canonical form, we define a \textbf{zoom in at zero at scale $\lambda$} as the (normalized) zoom-in:
+
+	\begin{defi}
+	 The zoom-in of $\gamma$ at scale $\lambda$ is the polynomial curve $\mathcal B_\lambda [\gamma](z) := \text{diag}(\lambda^{-\delta_1}, \dots, \lambda^{-\delta_d})L \gamma(\lambda z)$. Note that the coefficents of $\mathcal B_\lambda [\gamma](z)$ converge to the polynomial $(z^{\delta_1}, \dots z^{\delta_d})$ as $\lambda$ goes to zero.
+	\end{defi}
+	% subsection a_systematic_blow_up (end)
+	
+	\subsection{Model Case: Generealized moment curve} % (fold)
+	\label{sub:model_case_generealized_moment_curve}
+	
+
+	For a generalized moment curve $\gamma$ with exponents $\mbf n:= (n_1, \dots n_d)$ (that is $\gamma(z):= (z^{n_1}, \dots z^{n_d})$ ), and for ${\bf z} := (z_1, \dots z_d)$ the following holds:
+
+	\begin{equation}
+		\frac{J(\mbf z)}{v(\mbf z)} = S_{\bf n} (\bf z)
+	\end{equation}
+	where $S_{\bf n}$ is the Schur polynomial of degree $\bf n$, defined as
+	\begin{equation}
+	S_{\bf n}(z_1, \dots z_d) = \sum_{(t_i) \in T_{\bf n}} z_1^{t_1}\dots z_d^{t_d}	
+	\end{equation}	
+	where $T_{\bf n}$ is the set of semistandard Young Tableaux of shape $\bf n$. Now, to compare $J(z_i)$ with $\Lambda(z_1, \dots, z_d)$, the following fact is useful:
+
+	\begin{lemma}
+	\label{lem:det_is_limit}
+		Let ${\bf z}\in \mathbb C^d$, with $z_i\neq z_j$ for $i\neq z$, let $s\in \mathbb C$, and $\gamma:\mathbb C\to \mathbb C^d$ a polynomial curve, then:
+		\begin{equation}
+		J_\gamma(s) = \lim_{\lambda\to 0} \frac{\Lambda_\gamma(\lambda {\bf z}+ s)}{v(\lambda {\bf z})} 
+		\end{equation}  
+		and, in particular, in the case when $\gamma$ is a moment curve of exponent $\bf n$,
+		\begin{equation}
+		\label{eq:det_is_schur}
+			\Lambda^{(d)}_\gamma(s) = S_{\bf n}(s, \dots s)
+		\end{equation}
+	\end{lemma}
+
+	\begin{proof}
+		By Taylor expansion we have:
+
+		\begin{equation}
+			\gamma_i(s+ \lambda \mbf z_j) =  \sum_{k=0}^{d-1} \frac 1 {k!}\gamma_i^{(k)}(s) \lambda^k \mbf z_j ^k + O(\lambda^d)
+		\end{equation}
+		now, defining the matrices $\Gamma_{ij} = \gamma_i(s+ \lambda \mbf z_j)$, $ { Z}_{kj} =  (\lambda \mbf z_j) ^k$, and $(T_\gamma)_{ik} = \frac 1 {k!}\gamma_i^{(k)}(s) $ the equation above can be rewritten as:
+
+		\begin{equation}
+			\Gamma = T_\gamma Z + O(\lambda^d)
+		\end{equation}
+		since the determinant of $Z$ is $v({\bf z})$, the lemma follows from the multiplicative property of the determinant:
+
+		\begin{equation}
+			\frac{\Lambda_\gamma(\lambda {\bf z}+ s)}{v(\lambda {\bf z})} = 
+			\frac{\det \Gamma}{\det Z} =  \det [T_\gamma +  Z^{-1}O(\lambda^d)] \to_{\lambda \to 0} \det T_\gamma =  \Lambda^{(d)}_\gamma(s)
+		\end{equation}
+		The fact that $Z^{-1}= o(\lambda^{-d})$ (and thus we can eliminate the term as $\lambda\to 0$) is a quick computation from the adjoint forumla for the inverse.
+	\end{proof}
+
+	\begin{remark}
+		The same argument works as well for $\Lambda^{(k)}_\gamma$, $1\le k<d$, since each component of $\Lambda^{(k)}_\gamma$ is a determinant of components of the polynomial.
+	\end{remark}
+
+	Lemma \ref{lem:det_is_limit} is (together with Schur positivity) all we need to show the theorem for the generalized moment curve: 
+
+	\begin{proof}
+		[Proof (of \eqref{eq:hard_jacobian_estimate}, moment curve case).]
+
+		Let $\mu$ be a generalized moment curve of exponents $\mbf n$. Decompose $\mathbb C = \bigcup W_i$ into finitely many sectors $W_i = \{z: |\arg z - \theta_i|<\epsilon \}$ of angle $\epsilon$ small enough (depending on the exponents). Now, for $\mbf z = (\mbf z_1, \dots \mbf z_d) \in W_i^d$
+
+		\begin{equation}
+			 C_n |S_{\bf n}(\mbf z)| 
+			 \ge
+			 |\mbf z_1\cdot \mbf z_2  \dots \mbf z_d|^{\frac{\deg S_{\bf n}}{d}}
+			 = C_{\bf n} \left|\prod_{i=1}^d S_{\bf n}(\mbf z_i, \dots , \mbf z_i) \right|^{1/d}
+		\end{equation}
+		the first inequality is AM-GM inequality for all the monomials of $S_{\bf n}(\mbf z)$. The second equality follows from the fact that $ S_{\mbf n}(\mbf z_i, \dots , \mbf z_i) = C_n \mbf z_i^{{\deg S_{\mbf n}}/{d}}$. Now the result follows from equation \eqref{eq:det_is_schur} on Lemma \ref{lem:det_is_limit}.
+	\end{proof}
+
+	Lemma \ref{lem:det_is_limit} leads to the definition of a new differential form that corrects for the Vandermonde factor:
+
+	\begin{defi}
+		[Corrected multilinear form]
+		For $\gamma:\mathbb C \to \mathbb C^n$ and $\mbf z \in \mathbb C^n$we define:
+		\begin{equation}
+			\tilde \Lambda_\gamma(\mbf z) = 
+			\frac
+			{\Lambda_\gamma(\mbf z) }
+			{v(\mbf z) }
+		\end{equation}
+		moreover, (as we shall see in the following section) the map ${\tilde\Lambda}_{\cdot}(\cdot)$ is continuous in its domain $ \mathbb C^d \times P_N(\mathbb C)^d$.
+	\end{defi}
+
+	there is an extra property of the generalized moment curve that will be used later in this section, that we will prove now: \\
+
+	\todo[inline]{Is this lemma really clearer in sequence form? }
+
+	\begin{lemma}
+		[Transversality of the corrected multilinear form for moment curves]
+		\label{lem:transversality_corrected} Let $\mu$ be a moment curve, and $W$ a wedge of $\mathbb C$ of angle $\epsilon$ (depending on $\mu$) small enough. Let $\{\bf w^{(k)}\}_{k=1}^{\infty} $ be a sequence of elements in $ W^s$, $ \{\mbf z^{(k)} \}_{k=1}^{\infty}$ a sequence in $ W^t$, with $k:=c+s\le d$, assume $|\mbf z^{(k)}_i| = O(1)$, and $\mbf w^{(k)} \to 0$.
+
+		\begin{equation}
+		\label{eq:transversality}
+			\|\tilde \Lambda_\mu (\mbf z^{(k)}_1 \dots \mbf z^{(k)}_t, \mbf w^{(k)}_1 \dots \mbf w^{(k)}_s) \| \approx_\mu 
+			\|\tilde \Lambda_\mu (\mbf z^{(k)}_1 \dots \mbf z^{(k)}_t)\|\|\tilde \Lambda_\mu( \mbf w^{(k)}_1 \dots \mbf w^{(k)}_s) \|
+		\end{equation}
+	\end{lemma}
+
+	\begin{proof}
+		The $\lesssim$ direction is the fact that, for forms $\|a\wedge b\| \le \|a\|\|b\|$. 
+
+		For the converse, there is one co-ordinate $e_{n_1} \wedge e_{n_2} \dots \wedge e_{n_k}$ on the LHS that dominates the norm of the form. By restricting to that co-ordinate, it can be assumed that $k=d$. Note also that the term $\|\tilde \Lambda_\mu (z^{(k)}_1 \dots z^{(k)}_t)\|$ is a the absolute value of a Schur polynomial (and therefore is $O(1)$), so we can omit it in the estimates. 
+
+		By using the Young tableau decomposition of the Schur polynomials again, it suffices to show that each monomial in $\| \tilde \Lambda_\mu( w^{(k)}_1 \dots w^{(k)}_s) \|$ is dominated by a monomial in $\|\tilde \Lambda_\mu (z^{(k)}_1 \dots z^{(k)}_t, w^{(k)}_1 \dots w^{(k)}_s) \|$. This can be done as follows:
+
+		[DRAW PICTURE OF YOUNG TABLEAUX]
+	\end{proof}
+
+	[DO WE NEED WHAT WAS LEMMA 2.5 ANYWHERE]
+
+	% subsection model_case_generealized_moment_curve (end)
+
+	\subsection{Fixed polynomial case} % (fold)
+	\label{sub:fixed_polynomial_case}
+
+	This section shows that locally any polynomial can be approximated by a moment curve in such a way that the estimates can be transfered from the moment curve to the polynomial. By compactness, this will allow us to conclude Lemma \eqref{eq:hard_jacobian_estimate} for single polynomials, but with a number of open sets that might depend on the polynomial.
+
+	\begin{lemma}
+		[Convergence to the model in the non-degenerate set-up] 
+		\label{lem:nondegenerate_continuity}The function $\tilde\Lambda_{\mu}({\bf z})$ is continuous in $({\bf z},\mu)\in \mathbb C^k \times P_n(\mathbb C)^d$, where $P_n(\mathbb C)$ denotes the set of polynomials of degree $n$.
+	\end{lemma}
+
+	\begin{proof}
+		Consider both the numerator and denominator of $\tilde \Lambda_\mu({\bf z})$ as a polynomial in the components of $\mu$ and $z$. The polynomial $\Lambda_\mu(\bf z)$ on the numerator vanishes on the zero set set $\mathcal Z(v(z_1, \dots z_k))$, and since this polynomial does not have repeated factors, $v(z_1, \dots z_k)$ divides the numerator by the Nullstellensatz and the result follows. 
+	\end{proof}
+
+	This lemma implies the local version of the theorem around points where the Jacobian does not degenerate:
+
+	\begin{prop}
+	\label{prop:local_nondegenerate_jacobian}
+		Let $\gamma$ be a polynomial curve in $\mathbb C^d$, such that $\Lambda^{(d)}(z) \neq 0$. Then there is a neighborhood $B_\epsilon(0)$, with $\epsilon=\epsilon(\gamma)$ where \eqref{eq:hard_jacobian_estimate} holds with constant depending only on the dimension.
+	\end{prop}
+
+
+
+	\begin{proof}
+		By the affine invarance of \eqref{eq:hard_jacobian_estimate}, we can consider a sequence of zoom-ins in the canonical form parametrized by $\lambda$ that converge to the moment curve (the sequence cannot converge to any other generalized moment curve as the determinant does not vanish at zero). Therefore, we have to show that, for $\lambda$ small enough, the lemma is true for $\mathcal B_\lambda[\gamma]$, that is:
+
+		\begin{equation}
+			\left|\frac{J_{\mathcal B_\lambda[\gamma]}(z)}{v(z)}\right|\gtrsim_N \prod_{i=1}^d \Lambda^{(d)}_{\mathcal B_\lambda[\gamma]}(z_i)^{1/d}
+		\end{equation}
+
+		For the moment curve (the case $\lambda=0$) inequality \eqref{eq:hard_jacobian_estimate} is true, and reads:
+
+		\begin{equation}
+			\tilde \Lambda_{\mu}(z_1, \dots z_d) \gtrsim 1
+		\end{equation}
+		and since both sides of the inequality converge locally uniformly as $\lambda \to 0$ (the LHS by Lemma \ref{lem:nondegenerate_continuity} and the RHS because it is the $d-$th root of a sequence of converging polynomials), the inequality is true for $\lambda$ small enough in the zoom-in.
+	\end{proof}
+
+	For the degenerate points where the Jacobian vanishes a similar, but slightly more technical approach gives the same result.
+
+	\begin{lemma}
+		[Convergence to the model case in the degenerate set-up with zoom-in] 
+		\label{lem:degenerate_convergence}
+		Let $W \subseteq C$ be a sector of small amplitude $\epsilon(N,d)$ to be determined. Let ${\bf z}_j$ be a sequence of points in $W^k$ that have norm $\lesssim 1$. Let $\gamma_j:=\mathcal B_{\lambda_j}[\gamma]$, $\lambda_j \to 0$, be a sequence of polynomial curves of degree $N$ that converges to $\mu$, a generalized moment curve of exponents ${\bf n}=(n_1\dots n_d)$. Then:
+
+		\begin{equation}
+			\lim_{j\to \infty} \frac{\Lambda_{\gamma_j}({\bf z}_j)}
+			{|\Lambda_{\gamma_j}({\bf z}_j)|}-\frac{\Lambda_{\mu}({\bf z}_j)}
+			{|\Lambda_{\mu}({\bf z}_j)|} = 0
+		\end{equation}
+	\end{lemma}
+
+	\begin{proof}
+		First note that it suffices to prove that the lemma is true for a subsequence of the $(\lambda_j,\mbf z_j)$. The lemma will follow if we can prove that, for any fixed coordinate $e = e_{l_1} \wedge \dots \wedge e_ {l_k}$ we have:
+
+		\begin{equation}
+			\lim_{j\to \infty} \frac{\Lambda_{\gamma_j}({\bf z}_j)|_e}
+			{\Lambda_{\mu}({\bf z}_j)|_e} = 1
+		\end{equation}
+	using the notation $w|_e$ to denote the $e-$th co-ordinate of the form $w$. By restricting the problem to the co-ordinates $(e_{l_1}, \dots  e_ {l_k})$ we may assume $k=d$, and then it suffices to show, in the same set-up of the lemma, that:
+	\begin{equation}
+			\lim_{j\to \infty} \frac{\tilde \Lambda_{\gamma_j}({\bf z}_j)}
+			{\tilde \Lambda_{\mu}({\bf z}_j)} = 1
+	\end{equation}
+
+	We will prove this by induction. By passing to a subsequence if necessary, assume WLOG that $\mbf z_j$ has a limit. In the base case none of the components of ${\bf z}_j$ has limit zero. In that case, the denominator converges to a non-zero number (since the denominator is a Schur polynomial in the components of ${\bf z}_j$) and the result follows. 
+
+	Our first induction case is when all the components went to zero. In this case, by doing a further zoom-in and passing to a further subsequence if necessary, one can reduce to the case where not all the components of ${\bf z}_j$ go to zero. Thus, assume some, but not all the components of ${\bf z}_j$ go to zero.
+
+	Without loss of generality assume it's the first $0<k'<k$ components that go to zero. Let ${\mbf z'}_j:= ((\mbf z_j)_1, \dots (\mbf z_j)_{k'})$ be the sequence made by the first $k'$ components of each ${\bf z}_j$, and ${\mbf z'}''_j$ the sequence made by the remaining components. Then,
+
+	\begin{equation}
+		 \frac{\tilde \Lambda_{\gamma_j}({\bf z}_j)}
+			{\tilde \Lambda_{\mu}({\bf z}_j)}
+		=  \frac
+		{ \sum_{e'\wedge e'' = e}\tilde \Lambda_{\gamma_j}({\bf z}'_j)|_{e'}
+			\cdot
+		\tilde \Lambda_{\gamma_j}({\bf z}''_j)|_{e''}}
+		{ \sum_{e'\wedge e'' = e}\tilde \Lambda_{\mu}({\bf z}'_j)|_{e'}
+			\cdot
+		\tilde \Lambda_{\mu}({\bf z}''_j)|_{e''}}
+	\end{equation}
+	we know by the induction hypothesis that each of the terms in the sum in the numerator converges to the corresponding term in the denominator (in the sense that their quotient goes to $1$). So the result will follow if we can prove there is not much cancellation going on on the denominator, that is:
+
+	\begin{equation}
+		\limsup_{j \to \infty }
+		\frac 
+		{ \sum_{e'\wedge e'' = e} |\tilde \Lambda_{\mu}({\bf z'}_j)|_{e'}
+		\cdot
+		\tilde \Lambda_{\mu}({\bf z''}_j)|_{e''}|} {|\tilde \Lambda_{\mu}({\bf z}_j)|_e|}<\infty
+	\end{equation}
+	but this is a consequence of Lemma \ref{lem:transversality_corrected}, because we can bound each of the elements in the sum by 
+	$|\tilde \Lambda_{\mu}({\bf z'}_j)|
+		\cdot
+		|\tilde \Lambda_{\mu}({\bf z''}_j)| \lesssim {|\tilde \Lambda_{\mu}({\bf z}_j)|} $, by equation \eqref{eq:transversality}.
+
+
+	\end{proof}
+
+
+	We can also see this lemma in the continuity set-up. Following the same proof as in Proposition \ref{prop:local_nondegenerate_jacobian}, we can prove
+
+
+	\begin{prop}
+	\label{prop:local_degenerate_jacobian}
+		Let $\gamma$ be a polynomial curve in $\mathbb C^d$, such that $\Lambda^{(d)}(0) = 0$. Then there is a neighborhood $B_\epsilon(0)$, with $\epsilon=\epsilon(\gamma)$ where \eqref{eq:hard_jacobian_estimate} holds with constant depending only on the dimension.
+	\end{prop}
+
+	\begin{proof}
+		We have to show that there exists a zoom-in $\mathcal B_{\lambda}[\gamma]$ for $\lambda$ small enough so that the inequality 
+		$$
+		\left|\frac{J_{\mathcal B_{\lambda}[\gamma]}(z)}{v(z)}\right| \prod_{i=1}^d \Lambda^{(d)}_{\mathcal B_{\lambda}[\gamma]}(z_i)^{- 1/d} \gtrsim_N 1
+		$$ holds in the unit ball, but lemma \ref{lem:degenerate_convergence} implies that
+
+		$$
+		\lim_{\lambda_\to 0}
+		\left|\frac{J_{\mathcal B_{\lambda}[\gamma]}(z)}{v(z)}\right| \prod_{i=1}^d \Lambda^{(d)}_{\mathcal B_{\lambda}[\gamma]}(z_i)^{- 1/d} = 
+		\left|\frac{J_{\mu}(z)}{v(z)}\right| \prod_{i=1}^d \Lambda^{(d)}_{\mu}(z_i)^{- 1/d} \gtrsim 1
+		$$
+		where the  convergence is locally uniform, and the second inequality is inequality \ref{eq:hard_jacobian_estimate} for the moment curve.
+
+		
+	\end{proof}
+
+	This finishes the proof that \eqref{eq:hard_jacobian_estimate} if we split compact sets in a finite number of sets that may depend on the polynomial. A small variation of Lemma \ref{prop:local_degenerate_jacobian} can be used at a neighborhood of infinity. In this exposition infinity will be considered simultaneously with the uniform case instead.
+
+	% subsection fixed_polynomial_case (end)
+
+	\subsection{Uniformity for polynomials} % (fold)
+	\label{sub:uniformity_for_polynomials}
+
+	The aim of this section is to show that the number of open sets in the geometric Lemma \ref{lem:geometric_lemma} does not depend on the polynomial. In order to do so, we will show that given a sequence of polynomial curves there exists a subsequence of curves for which \eqref{eq:hard_jacobian_estimate} holds with a uniformly bounded amount of subsets, and thus there must be a uniform bound for all polynomial curves.
+
+	The main challenge in the proof of the uniformity of the number of open sets in Lemma \ref{lem:geometric_lemma} is the case in which the zeros of the Jacobian \textit{merge}, that is, the curves $\gamma_n$ converge to a curve $\gamma$ such that $J_\gamma$ has less zeros than $\gamma$ (without counting multiplicity). We will use zoom-ins near the zeros of $\gamma$ to keep track of this cases. The following lemma is a key tool to do the zoom in:
+
+	\begin{lemma}\label{lem:annuli_continuity}
+		Let $\gamma$ be a non-degenerate polynomial curve in $\mathbb C^d$ of degree $N$ such that $$\gamma_i = \prod_{k=1}^{n_j} (z - w_{i,k}) \prod_{l=1}^{m_j} \left(1 - \frac{z}{v_{i,l}}\right)$$, $v_{i,l}, w_{j,k} \in B_{R }\setminus B_{r}$, $n_1<n_2< \dots < n_d + m_d$ Then there is a constant $C := C(N, d)$ such that $(PI)$ holds on $W \cap (B_{C^{-1}R }\setminus B_{C r})$ for any wedge $W$ of angle $\le \epsilon(N,d)$.
+	\end{lemma}
+
+	The lemma (and its proof) can be informally stated as: ``If all the zeros of the components of $\gamma$ are far from an annuli, then $\gamma$ behaves like the corresponding moment curve in the annuli". To prove the lemma we will have to re-write it into an equivalent form, more suitable for compactness arguments:
+
+	\begin{lemma} [Lemma \ref{lem:degenerate_convergence}, annuli verison]\label{lem:annuli_convergence}
+		Let $\gamma_n$ be a sequence of polynomial curves for which the coefficients coefficients $w_{(i,k),n} \to_{n\to \infty} 0$, $v_{(i,l),n} \to_{n\to \infty} \infty$,  ($v,w$ defined using the notation of the previous lemma, $\gamma_n \to \mu$, a non-degenerate moment curve). Let $r_n$ define a sequence of annuli $A_n = B_0(1)\setminus B_0(r_n)$, so that $\max_{i,k} w_{(i,k),n} = o(r_n)$. Let $\mbf z_n \in (A_n \cap W)^k$, where $W$ is a sector of small enough angle depending of $n,d$ only. Then:
+
+		\begin{equation}
+			\lim_{j\to \infty} \frac{\Lambda_{\gamma_j}({\bf z}_j)}
+			{|\Lambda_{\gamma_j}({\bf z}_j)|}-\frac{\Lambda_{\mu}({\bf z}_j)}
+			{|\Lambda_{\mu}({\bf z}_j)|} = 0
+		\end{equation}
+	\end{lemma}
+
+	\begin{proof}
+		The proof is the same as the proof in Lemma \ref{lem:degenerate_convergence}. The key difference being the reason why we can zoom in again. In Lemma \ref{lem:degenerate_convergence} the $\gamma_n$ were themselves blow-ups, so blowing up did not change the hypothesis of the lemma. Here, the control of $r_n$ ensures the blow-up will be always at a smaller scale than the scale at which the zeros of $\gamma_n$ are.
+	\end{proof}
+
+	\begin{remark}
+		Note that in the particular case in which there are no $v_{(i,l),n}$ (that is, all the zeros are going to zero) the annuli can be taken to have exterior radius equal to infinity (that is, the annuli can degenerate to the complement of a disk) or, in the case where all the $w_{(i,k),n}$ are exactly equal to zero, it can be taken to have interior radius equal to 0.
+	\end{remark}
+
+	Lemma \ref{lem:annuli_continuity} that we just proved (in its convergence form) lets us control  $J_\gamma$ far from the zeros of the components of $\gamma$. The zeros of the components, however, depend on the co-ordinates we take. In order to solve this, we will show that there is one \textit{honest} co-ordinate system in which, if we have a zero of a co-ordinate of $\gamma$ that has size $O(1)$ then there is also a zero of $\mathcal J_{\gamma}$ that has size $O(1)$.
+
+
+	\begin{lemma}[Honest zeros lemma]
+	\label{lem:honest_zeros}
+		For a non-degenerate polynomial curve $\gamma$, let $R(\gamma)$ be the (absolute value of the) supremmum of the zeros of $J_\gamma$ that has absolute value smaller than 1. Let $r_\gamma$ be the supremmum of the zeros of the co-ordinates of $\gamma$ (again in absolute value, and counting only the zeros that have absolute value less than 1).
+
+		Then, for any sequence of polynomial curves $\gamma_n \to \mu$, a non-degenerate generalized moment curve, there is a constant $k := k(\gamma_n)$, a sequence of linear operators $L_n \in GL(n;\mathbb C)$ converging to the identity and a sequence of constants $c_n\to 0$ so that:
+
+		\begin{equation}
+			R(L_n \gamma_n(z-c_n)) \ge k r(L_n \gamma_n(z-c_n))
+		\end{equation}
+
+		In other words, after a suitable change of co-ordinates, controlling the zeros of a sequence of polynomial curves allows us to control the zeros of its Jacobian without significant losses.
+ 	\end{lemma}
+
+ 	\begin{proof}
+ 		We will assume that $\mu$ is not the standard moment curve, since otherwise the result is trivial because $J_\mu = 1$. We choose the $c_n \to 0$ to re-center the $\gamma_n$ so that $J_{\gamma_n}$ always has a zero at zero. Let $n_i$ be the degree of the $i-$th co-ordinate of $\mu$. By composing with suitable $L_n\to Id$ we can assume that the degree $n_i$ component of the $i-th$ co-ordinate of $\gamma_n$ is always $1$, and the degree $n_j$ of the $i-$th component (for $i\neq 0$) is $0$ for all $\gamma_n$. Let $\tilde \gamma_n = L_n \gamma_n(z-c_n)$, then, the following holds:
+
+ 		\begin{lemma}
+ 		\label{lem:honest_helper}
+ 			Let $\hat\gamma_n$ be a sequence of zoom-ins to $L_n \gamma_n(z-c_n)$ at the scale where the zeros of the co-ordinates appear, and assume $\hat\gamma_n \to \gamma$. Then the multiplicity of the zero of $J_\gamma$ at zero is strictly smaller than the multiplicity of $J_\mu$ at zero.
+ 		\end{lemma}
+
+ 		using the lemma above, we can finish the proof by contradiction. Assume $ \gamma_n$ is such that $\tilde \gamma n = L_n \gamma_n(z-c_n)$ contradicts the lemma. Pick a subsequence  for which $R(\tilde\gamma_n)/r(\tilde\gamma_n)$ goes to zero. Let $\hat \gamma_n$ be a zoom-in at the scale at which the first zeros of the components of $\tilde\gamma_n$ appear.Assume, by passing to a subsequence if necesary, that $\hat \gamma_n$ converges. By the hypothesis of $R(\tilde\gamma_n)/r(\tilde\gamma_n)$, it must be that all the zeros of $J:{\hat\gamma_n}$ concentrate back at zero, but this contradicts lemma \ref{lem:honest_helper}.
+ 	\end{proof}
+	
+	% subsection uniformity_for_polynomials (end)
+
+
+	\begin{proof}
+		[Proof (of  Lemma \ref{lem:honest_helper}).]
+		Define a matrix $M_{i,k} \in \mathcal M_{(d,N)}(\mathbb C)$ so that $M_{i,k}$ is the coefficient of degree $k$ of the $i$ component. By the transformation we have done, we know the matrix $M_{i,k}$ has rank $d$, and that for the column $i$, the element $M_{i,n_i}$ is equal to $1$ and for $j>n_i$, $M_{i,n_i}$ is equal to $0$. The multiplicity of $J\mu$ at zero is $\sum n_i - \frac{d^2+d}{2}$. To compute the multiplicity of $J_\gamma$ at zero, we do the following procedure:
+
+		Pick the first column (smallest $k$ index) that is non-zero. Pick the first element of this column (smallest $i$) index that is non-zero. Define $\tilde n_i:=k$, where $i$ is the index that is not zero. Row-reduce $M_{i,k}$ so that the $k-$th column is $e_i$. Set all the elements on the right of $(i,n_i)$ to zero. Repeat this process $d$ times. 
+
+		This procedure is a row-reduction and blow-up procedure at the origin, that shows that, at the origin, the polynomial curve looks like a generalized moment cuve of degrees $\tilde n_i$, where $\tilde n_i\le n_i$ with at least one of the $\tilde n_i< n_i$. Therefore, the degree at the origin is strictly smaller.
+	\end{proof}
+
+	Now we have all the necessary tools to prove \eqref{eq:hard_jacobian_estimate} in  Lemma \ref{lem:geometric_lemma} in the full generality case. The proof is as follows:
+
+	\begin{itemize}
+		\item The proof is a proof by contradiction. Assume there is a sequence of $\gamma_n$ for which the minimum number of sets need for the geometric Lemma \ref{lem:geometric_lemma} to hold grows to infinity. The contradiction will come from showing that a certain subsequence of the $\gamma_n$ can be covered by a bounded number of subsets.
+		\item By passing to a subsequence if necessary, and re-parametrizing, we will assume that the $\gamma_n$ converge to a non-degenerate generalized moment curve $\hat \gamma$, and that all the zeros of $J_{\gamma_n}$ converge to the origin, with one zero of $J_{\gamma_n}$ being exactly at the origin.
+		\item By Lemma \ref{lem:annuli_continuity} [convergence of the Jacobian on annuli with possibly infinite radius], after a suitable reparametrization if necessary, we can cover uniformly $\mathbb C\setminus B_{r_n}$ with wedges so that property \eqref{eq:hard_jacobian_estimate} holds, where $r_n$ is proportional (with a constant depending on $d,N$) to the size of the biggest zero of $J_{\gamma_n}$. After a suitable change of coordinates by Lemma \ref{lem:honest_zeros}, this is equivalent to consider $r_n$ to be of the size of the biggest zero of a component of $\gamma_n$.
+		\item Zoom in to the polynomials $\gamma_n$ at scale $r_n$ to obtain the polynomials $\gamma'_n$. We have to show now that the theorem holds for $\gamma'_n$ on the unit ball. By passing to a subsequence, assume WLOG that the polynomials converge to a non-degenerate polynomial curve $\gamma'$. Note that the zeros of $J_{\gamma'}$ cannot all converge to the origin (because for each $\gamma'_n$ there is a zero with size $O(1)$). 
+		\item By Lemma \ref{lem:annuli_continuity} again, we can find a sequence of annuli of outer radius $O(1)$, centered at the zeros of $\gamma'_n$ so that the condition \eqref{eq:hard_jacobian_estimate} holds after splitting the annuli into wedges.
+		\item On the intersection of all the exteriors of all the Annuli (by the exterior meaning the connected component containing infinity of the complement of the annuli), property \eqref{eq:hard_jacobian_estimate} holds for $n$ big enough after splitting into $O(1)$ sets, by compactness and Proposition \ref{prop:local_nondegenerate_jacobian} [Local version of \eqref{eq:hard_jacobian_estimate} in the non-degenerate case].
+		\item Therefore, it suffices to prove that property \eqref{eq:hard_jacobian_estimate} wolds in the interior component of the complement of the annuli. But this can be done by induction: Zoom in into each of those components (which, by hypothesis have lower degree than the original one), and repeat the argument.
+	\end{itemize}
+
+	\subsection{Injectivity of the $\Sigma$ map} % (fold)
+	\label{sub:injectivity_of_the_}
+
+	The goal of this section is the last part of Lemma \ref{lem:geometric_lemma}, which we re-state:
+
+	\begin{lemma}
+		For each triangle $T_j$ described in the proof of Lemma \ref{lem:geometric_lemma} there is a closed, zero-measure set $R_j \subseteq T_j^d$ so that the sum map $\Sigma(z):=\sum_{i=1}^d \gamma(z_i)$ is $O_N(1)$-to-one in $T_j^d\setminus R_j$.
+	\end{lemma}
+	
+
+	\begin{proof}
+		Our set $R_j$ is the set where there is $i\neq j$ where $z_i=z_j$. The fact that $\Lambda_\gamma'(z_1, \dots z_d)$ does not vanish in $T_j\setminus R_j$ (a consequence of \eqref{eq:hard_jacobian_estimate}) tells us that $(z_1, \dots z_d)$ does not belong to an irreducible variety of dimension greater than zero of the variety defined by $\{(x_1, \dots x_d) \in \mathbb C^d | \Lambda_\gamma'(x_1, \dots x_d) = \Lambda_\gamma'(z_1, \dots z_d)\}$. Therefore, the result follows by Bezout's theorem.
+	\end{proof}
+	% subsection injectivity_of_the_ (end)

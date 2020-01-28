@@ -1,0 +1,125 @@
+%!TEX root = ../main.tex
+	This section outlines the modifications that must be done to the argument [Stovall] to extend it to the complex case. The paper reduces the analytic result (whether the operator is bounded from a certain $L^p$ to a certain $L^q$) to a geometric result, previously proven by Dendrinos and Wright in the real case, proven in section \ref{sec:the_geometry} for the complex scenario.
+
+
+	\subsection{Uniform Local Restriction} % (fold)
+	\label{sub:uniform_local_restriction}
+	
+	The first step in the proof is the local result:
+
+	\begin{thm}[Theorem 2.1 in {[Stovall]}]\label{thm:uniform_local_restriction}
+	 	Fix $d\ge 2$, $N$, and $(p,q)$ satisfying ZZZZ. Then, for every ball $B\subseteq \mathbb R^d$ and every degree $N$ polynomial $\gamma: \mathbb C \to \mathbb C^d$ satisfying
+	 	\begin{equation}
+	 		0<C_1 \le J_\gamma(z) \le C_2, \,\,\, z \in B
+	 	\end{equation}
+	 	we have the extension estimate
+	 	\begin{equation}
+	 		\|\mathcal E_\gamma(\chi_B f)\|_q \le C_{d,N,\log {\frac {C_2}{C_1}}} \|f\|_p
+	 	\end{equation}
+	 \end{thm} 
+
+	An important preliminary fact, proven in [Stovall, lemma XXX] is that whenever $J_\gamma \lesssim 1$ on a compact, convex set, there is a change of co-ordinates $L \in SU(d;\mathbb C)$ so that all the coefficients in $L\circ J_\gamma$ are $O_{N,d}(1)$. The proof is done through a compactness argument, and transfers without any significant modification to the complex case for convex domains. The exact formulation that we will use is:
+
+	\begin{lemma}
+		Fix $N,d \ge 2$, $\epsilon>0$. Then for any polynomial curve $\gamma$ and triangle $T$ with $B_\epsilon \subset T\subset  B(0,1)$  obeying that $|J_\gamma(T)|\subseteq [1/2, 2]$ there exists a transformation $A \in SU(n;\mathbb C)$ so that $\|A\gamma\|_{C^N(K)} \lesssim_\epsilon 1$.
+	\end{lemma}
+
+	\begin{proof}
+		Define $\gamma_\epsilon = \epsilon^{\frac{d^2+d}{2}}\gamma(\epsilon^{-1} z)$. Now $\gamma_\epsilon$ has the property that $|J_{ \gamma_\epsilon}(B(0,1))|\subseteq [1/2, 2]$. This reduces the problem to the situation in Lemma XXXX in [Sto]
+	\end{proof}
+
+
+
+
+
+	The second preliminary is a statement about offspring curves. Given $\mbf h:= (\mbf h_1, \dots, \mbf h_k)$, the offspring curve $\gamma_h(z)$ is defined as $\gamma_h := \frac 1 K \sum_{i=1}^K \gamma(z+h_i)$. Lemma 2.3 in [Stovall] states:
+
+
+	\begin{lemma}
+	Fix $N,d \ge 2$ and $\epsilon>0$. There exists a constant $c_d > 0$ and a radius $\delta:=\delta(\epsilon,N,d)$ so that for any triangle $B_\epsilon(0) \subseteq T \subseteq B_1$ and so that the following conditions hold for any polynomial curve $\gamma$ satisfying 
+
+	\begin{equation}
+	\label{eq:stovall_offspring_hybound}
+		|J_\gamma(T)|\subseteq [1/2, 2]
+	\end{equation}
+
+	For any ball $B$ of radius $\delta$ centered at a point in T, and any $\mbf h:= (\mbf h_1, \dots, \mbf h_k) \in \mathbb C^k$, the curve $\gamma_h$ satifies the following inequalities $\tilde B = \bigcap_{i=1}^k (B - h_j)$:
+
+	\begin{equation}
+		\label{eq:stovall_ineq_1}
+		|J_{\gamma_h}(\mbf z)| \gtrsim_{N,d,\epsilon} |v( \mbf z)| \prod_{i=1}^d |\Lambda^{(d)}_{\gamma_h}( \mbf z_i)|, \text{ for any }\mbf z \in \tilde B^d
+	\end{equation}
+
+	\begin{equation}
+		\label{eq:stovall_ineq_2}
+		|L_{\gamma_h}(z)| \approx_{N,d,\epsilon} \text{ for any } 1 \in \tilde B
+	\end{equation}
+	in particular, one can cover any such $T$ by $O_{N,d,\epsilon}(1)$ open sets so that the conclusions \eqref{eq:stovall_ineq_1} and \eqref{eq:stovall_ineq_2} hold for any polynomial that follows \eqref{eq:stovall_offspring_hybound}.
+	\end{lemma}
+
+	\begin{proof}
+		First note, that by choosing $\delta$ small enough and the Lemma [THE PREVIOUS LEMMA], we have that $$ |J_\gamma(T + B_\delta)|\subseteq [1/4, 4]$$. This fact prevents any issues arising from the different triangle shapes. From here on, the result follows as the proof in [STOVALL, Lemma 2.3].
+	\end{proof}
+
+	Using those preliminaries, we can proceed to the proof of Theorem \ref{thm:uniform_local_restriction}. The proof follows exactly as in [xxxx], which is in itself a sketch of the proof in [That old paper that's super nice]. The following lemma is a simple computation, that takes the role of the equivalent necessary result in the real case.
+
+	\begin{lemma}
+		The function $|v(0, z_1, \dots z_{d-1})|^{-2(a-1)}$ belongs to $L^{\frac{d}{2(a-1)}-\epsilon}_{B_1^d(0)}$ for $\epsilon > 0$ small.
+	\end{lemma}
+
+	other than this difference (and the factors of $2$ that appear at the exponent everywhere where the Jacobian appears, that lead to the factor of $2$ in Lemma [XXX the lemma above]), the proof of Lemma 2.4 in [Sto] applies mutatis mutandis to the complex case.
+
+
+
+
+	% subsection uniform_local_restriction (end)
+
+	\subsection{Almost orthogonality} % (fold)
+	\label{sub:almost_orthogonality}
+
+	The main result in this section is:
+
+	\begin{lemma}
+		Let $\gamma:\mathbb C\to \mathbb C^d$ be a complex polynomial curve, and let $T_j$ be one of the sets in Lemma \ref{lem:geometric_lemma}. For $n\in \mathbb  Z$ define the dyadic partition
+		\begin{equation}
+			T_{j,n} = \{z \in T_j, |z_j - b_j| \sim 2^n\}
+		\end{equation}
+		Then for each $(p,q)$ satisfying $q= \frac{d(d+1)}{2}p'$ and $\infty > q > \frac{d^2+d+2}{2}$ and $f \in L^p(d\lambda_\gamma)$ we have:
+		\begin{equation}
+			\|\mathcal E_\gamma (\chi {T_j} f)\|_{L^q(\mathbb R^{2d})} \lesssim 
+			\left\|
+			\left(
+				\sum_n |\mathcal E_\gamma (\chi {T_{j,n}} f)|^2
+			\right)^{1/2}
+			\right\|_{L^q(\mathbb R^{2d})}
+		\end{equation}
+	\end{lemma}
+
+	\begin{proof}
+		The proof is a standard Littlewood-Paley argument, see Stovall again.
+	\end{proof}
+	
+
+	\subsection{Almost orthogonality} % (fold)
+	\label{sub:almost_orthogonality}
+
+	The goal is now to show that we can sum the pieces in the Littlewood-Paley decomposition. The main proposition to do so (essentially Lemma 4.1 in [Stovall]) is:
+
+	\begin{lemma}
+		There exists $\epsilon(N,d,p)>0$ such that, if $n_1 \le \dots \le n_d$, and $f_i$ is Schwartz and supported in $T_{j,n_i}$ we have:
+
+		\begin{equation}
+			\left \|\prod_{i=1}^d \mathcal E_\gamma [f_i]\right\|_{L^{d+1}} \lesssim 2^{n_D-n_1} \prod_{i=1}^d \|f_i\|_{L^2(d\lambda)}
+		\end{equation}
+	\end{lemma}
+	
+
+	before proving that, we will prove an auxiliary Lemma (the complexified version of a Lemma by Christ in [STOXXX12]) that will be needed during the interpolation:
+
+	\begin{equation}
+		\int_{\mathbb C^l} \prod_{1\le i\le l}f_i(z_i) \prod_{1\le i<j\le l} g_{i,j}(z_i-z_j) dz \lesssim \prod_{i=1}^l \|f_i\|_p \prod_{1\le i<j\le l} \|g_{i,j}\|_{q,\infty}
+	\end{equation}
+
+	\todo[inline]{The proof is exactly the same as in Christ 12}
+	% subsection almost_orthogonality (end)
+	% subsection almost_orthogonality (end)

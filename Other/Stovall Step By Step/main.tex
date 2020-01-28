@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+\title{Uniform estimates for fourier restriction to complex polynomial curves in $\mathbb{R^d}$}
+\author{Jaume de Dios Pont}
+\newtheorem{thm}{Theorem}
+\newtheorem{defi}{Definition}
+
+\begin{document}
+	\maketitle
+
+	\abstract{
+		This is the first instance of a uniform optimal estimate (not including the endpoint) for families of surfaces of dimension>1. On the other hand, they are still on the specific $d|cod$, which seems to be easier.
+	}
+	\section{Introduction}
+	\begin{thm}
+		For each $N,d$ and $(p,q)$ satisfying:
+
+		\begin{equation}
+			p' = \frac{d(d+1)}{2} q, \;\; q> \frac{d^2+d+2}{d^2+d}
+		\end{equation}
+
+		there is a constant $C_{N,d,p}$ such that for all polynomials $\gamma: \mathbb C \to \mathbb C^d$ of degree up to $N$ we have:
+
+		\begin{equation}
+			\|\hat f\|_{L^q(d\lambda_\gamma)} \le C_{N,d,p} \|f\|_{L^q(dx)}
+		\end{equation}
+		for all Schwartz functions $f$.
+	\end{thm}
+
+	We will instead prove the dual problem, showing boundedness of the adjoint (extension) operator $\mathcal E_\gamma$.
+
+
+\section{Uniform Local restriction}
+
+
+\begin{defi}
+	For a polynomial $\gamma: \mathbb C \to \mathbb C^d$ we define $$L_\gamma(z) := \det(\gamma'(z), \gamma^{(2)}(z), \dots,\gamma^{d}(z))$$ $$J_\gamma(z_1, \dots , z_d) = \det(\gamma'(z_1), \dots, \gamma'(z_d))$$
+\end{defi}
+
+In this section we will prove the following result:
+
+
+\begin{thm}
+	Fix $d>2$, $N$, and a feasible $(p,q)$ pair. For every triangular set $S\subset \mathbb C^d$ and every degree $N$ polynomial $\gamma: \mathbb C \to \mathbb C^d$ satisfying:
+
+	\begin{equation}
+		0 < C_1 \le \Re \, L_\gamma(z) 
+	\end{equation}
+
+	\begin{equation}
+		|L_\gamma(z)| \le C_2 < \infty
+	\end{equation}
+	in S we have the extension estimate:
+
+	\begin{equation}
+		\|\mathcal E_\gamma \|_{L^q} \le C_{d,N, \frac {C_1}{C_2}}\|f\|_{L^p(d\lambda_\gamma)}
+	\end{equation}
+\end{thm}
+
+Without loss of generality, we can split in a controlled number of triangles, and assume $C_1 = \frac 1 2$, $C_2=2$. 
+
+
+\section{$\epsilon-$aligned sets, $\epsilon-$aligned functions} % (fold)
+\label{sec:section_name}
+
+The main idea of the paper is to uniformly partition 
+
+\begin{defi}[$\epsilon-$aligned set] We say that a list $S = (z_1, .. z_n)$ is $\epsilon-$aligned in a direction $s \in C\setminus 0$ if $\arg{(s^{-1}(z_i-z_j))} \in [-\pi +\epsilon,\pi -\epsilon]$ whenever\footnote{we use the convention $\arg(0) = 0$} $i<j$. (or, equivalently, whenever $j=i+1$). Given a list $s$ let $A_\epsilon(S)$ be the set of $s$ such that $S$ is $\epsilon$-aligned with respect to $s$
+\end{defi}
+
+\begin{defi} ()
+	Given two lists $S = (z_1, \dots z_n)$, $T=(w_1, \dots w_{n+1})$ we say $T> S$ if $w_i$ is a real convex combination of $z_i,z_i+1$. We extend the relationship by transitivity to arbitrary tuples. 
+\end{defi}
+
+Now, it is an easy to see that that $S>T$ implies that $A_\epsilon(S) \subseteq A_\epsilon(T)$.\\
+
+\textbf{Decomposition procedure D1'}
+
+There exists a decomposition of a rational function $m(z)$onto $O_{\epsilon, N}(1)$ convex sets $C_i$, such that there exists $w_i, c_i \in \mathbb C$, $n_i \in \mathbb N$, such that on each $c_i$:
+
+\begin{equation}
+	\frac{p(z)}{w_i(z-c_i)^n} \in B(1,\epsilon)
+\end{equation}
+
+Using this lemma, \\
+
+
+\textbf{Partition for injectivity:}
+
+Let $P(x) = (x-x_i)^k_i$. Do $\epsilon$ partitions for the jacobian and all the involved polynomials and their derivatives. Assume you are in one of the $\epsilon-$regions where the Jacobian does not vanish first. You can write 
+
+\section{Uncoordinated polynomials} % (fold)
+\label{sec:uncoordinated_polynomials}
+
+In this section we will study functions that $\epsilon-$look like polynomials (in the sense above), and whose derivatives also $\epsilon-$look like polynomials.
+
+Note that $P =_\epsilon Q$ in $D$ does not imply $P'=_\epsilon Q$ in $D$
+
+Want to solve: $\sigma_M(\vec x) = \sum M(x_i) = 0$
+
+$$d\Sigma_M = \frac 1 {K!} V(x_i)$$
+
+$p(z) = z^p$
+
+$z' = - p z^{p-1} p(z) = -p z$
+
+
+
+
+% section uncoordinated_polynomials (end)
+
+
+
+
+% section section_name (end)
+\end{document}

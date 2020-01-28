@@ -1,0 +1,128 @@
+%!TEX root = ../main.tex
+
+
+	Multiple results in harmonic analysis involving integrals of functions over curves [xx,yy] depend strongly on the non-vanishing of the torsion of curves. A program initiated by XXX aims to extend these results to the degenerate case where the torsion vanishes at a finite number of points, by using the affine arc-length as a measure. As a model case, multiple results have been proven in which the implicit constants do not depend on the polynomial curve, but only on its degree and the dimension of the ambient place.\\
+
+	A key part of this developments have been based on a geometric lemma by Dendrinos and Wright [DW14] that provides very precise bounds to the torsion in the case of real polynomial curves. At an intuitive level, the geometric Lemma states that a polynomial curve can be split into a finite (depending only on the dimension and the degree of the polynomial) number of open sets so that, in each open set the curve behaves like a \textit{model curve} that is easier to study. This paper extends the result for complex variables using compactness techniques. \\
+
+	As a consequence this paper extends two theorems by Stovall to the complex case. First proving the optimal restriction theorem [Sto16] for a complex polynomial curves $\gamma:\mathbb C \to \mathbb C^d$ under the isomorphism $\mathbb C \sim \mathbb R^2$. We show, following the proof in [Sto16] that the restriction is uniform over all complex curves, a conjecture by Bak and Ham. [BakHam]\\
+
+	Using the techniques by Stovall and Christ [Sto18,Chr17]  we [hopefully will] prove the optimal range for the convolution operator for polynomial curves, extending the result of [Chung, Bak] to the full polynomial case, and recovering a full analogue of theorem 1 in [Sto18].\\
+
+
+
+
+
+	\subsection{The affine measure on a complex curve} % (fold)
+	\label{sub:the_affine_measure_on_a_complex_curve}
+	
+	\todo[inline]{Here we will explain the $\Lambda^{(d)}$ notation}
+
+	In this article we will consider the extension/restriction operators with respect to the complex affine \textit{arclength} measure. Inspired by the real affine arclength measure, it is defined for a complex curve $\gamma(z):\mathbb C \to \mathbb C^d$ as the weighted push-forward
+
+	\begin{equation}
+		d \lambda_\gamma = \frac 1 {d!}  \gamma_* \left(\det [\gamma'(z), \gamma''(z), \dots ,\gamma^{(d)}(z)]^{\frac{4}{d^2+d}} |dz|\right)
+	\end{equation}
+	this measure has been considered in the literature [][] for two of its properties:
+
+	\begin{itemize}
+		\item The measure $\lambda$ is co-variant both under re-parametrization of $z$ ($\gamma\circ\phi(z)$ represents the same measure for $\phi$ a a conformal map) and affine maps applied on $\mathbb C^d$ (that is, if $L \in GL(\mathbb C;d)$, then $d\lambda_{L\circ\gamma} = L_* d\lambda_\gamma$)
+		\item The measure $\lambda$ vanishes at the points where the torsion of $\gamma$ vanishes. The relevance of this property comes from the fact that the restriction theorem in the full range fails for the arc-length measure at neighbored of a point where the torsion of $\gamma$ vanishes.
+	\end{itemize}
+
+	moreover, [] shows that this measure is optimal, in the sense that any measure for which theorem ZZZ holds must be absolutely continuous with respect to $d\lambda$.
+
+	To make things more notationally convenient further down, we will not only consider the  affine measure, but a set of related differential forms, for $0<k\le d$:
+
+	\begin{equation}
+		\Lambda^{(k)}_\gamma(z) := \gamma(z)\wedge  \dots \wedge \gamma^{(d)}(z)
+	\end{equation}
+	\begin{equation}
+		\Lambda_\gamma(z_1, \dots , z_k) := \gamma(z_1)\wedge\dots\wedge \gamma(z_k)
+	\end{equation}
+	Note that $\Lambda_\gamma$ is a function with variable arity (which will be clear by the context) that has an element of $\mathbb C^k$ as an input and returns a $k-$form as an output.
+
+	\begin{equation}
+		v(z_1, \dots z_k) := \prod_{i<j} (z_i-z_j)
+	\end{equation}
+	and, to be consistent with the previous notation in XXXX, we will define 
+
+	\begin{equation}
+		J_\gamma(z) := \frac 1 {d!}\Lambda^{(d)}_\gamma(z) = \frac 1 {d!} \det [\gamma'(z), \gamma''(z), \dots ,\gamma^{(d)}(z)]
+	\end{equation}
+	and $L_\gamma = J_{\gamma}^{4/{d^2+d}}$
+
+
+	% subsection the_affine_measure_on_a_complex_curve (end)
+
+
+	\subsection{Restriction Problem} % (fold)
+	\label{sub:restriction_problems}
+	
+	In section XXX we will prove the following theorem:
+
+	\begin{thm}
+	\label{thm:restriction}
+		For each $N,d$ and $(p,q)$ satisfying:
+
+		\begin{equation}
+			p' = \frac{d(d+1)}{2} q, \;\; q> \frac{d^2+d+2}{d^2+d}
+		\end{equation}
+
+		there is a constant $C_{N,d,p}$ such that for all polynomials $\gamma: \mathbb C \to \mathbb C^d$ of degree up to $N$ we have:
+
+		\begin{equation}
+			\|\hat f\|_{L^q(d\lambda_\gamma)} \le C_{N,d,p} \|f\|_{L^p(dx)}
+		\end{equation}
+		for all Schwartz functions $f$, where the Fourier transform is the $\mathbb R^{2n}$-dimensional Fourier transform.
+	\end{thm}
+
+	The real polynomial counterpart to this theorem was proven originally in [XXX Stovall], and [Bak, Ham] provides a partial answer to the theorem above for particular complex curves, and shows the optimality of the measure $\lambda$, that is, that any other measure supported on $\gamma$ for which Theorem XXX holds in the given range must be absolutely continuous with respect to $\gamma$. This also follows from the fact [CCCCC] that the measure $\lambda$ corresponds to the measure described in [Dury's paper] for $\gamma$.
+
+	This paper follows the proof in [XXX Stovall]. The main challenge is finding a complex substitute for Lemma XXX (a modification of Theorem YYY). Once this matter is resolved, section XXX follows [XXXX Stovall] closely, with small modifications whenever necessary.
+
+	A more amenable version of the problem above is the extension problem, instead of bounding the restriction operator defined above, we bound the dual extension operator $\mathcal E_\gamma: L^p(d\lambda_\gamma) \to L^q(\mathbb R^n)$ defined as
+
+	\begin{equation}
+		\mathcal E_\gamma(f) = \mathcal F^{-1}(f d\lambda_\gamma).
+	\end{equation}
+	Theorem YYYY now becomes 
+	\addtocounter{thm}{-1}
+	\begin{thm}[Dual version]
+		For each $N,d$ and $(p,q)$ satisfying:
+
+		\begin{equation}
+			p' = \frac{d(d+1)}{2} q, \;\; q> \frac{d^2+d+2}{d^2+d}
+		\end{equation}
+		there is a constant $C_{N,d,p}$ such that for all polynomials $\gamma: \mathbb C \to \mathbb C^d$ of degree up to $N$ we have:
+
+		\begin{equation}
+			\|f\|_{L^{p'}(dx)} \le C_{N,d,p} \| f\|_{L^{q'}(d\lambda_\gamma)} 
+		\end{equation}
+		for all Schwartz functions $f$, where the Fourier transform is the $\mathbb R^{2n}$-dimensional Fourier transform.
+	\end{thm}
+
+
+	% subsection restriction_problems (end)
+
+	\subsection{Convolution against complex curves} % (fold)
+	\label{sub:convolution_against_complex_curves}
+	
+	% subsection convolution_against_complex_curves (end)
+
+
+	\subsection{Outline of the work} % (fold)
+	\label{sub:outline_of_the_work}
+
+	In both Theorem XXXX and Theorem YYY the strategy to show uniformity of the associated operator norm goes as follows:
+
+	\begin{enumerate}
+		\item The complex plane is partitioned into sets $\mathbb C = \bigsqcup_{i=0}^{N(n,d)} U_i$, so that for each $U_i$ there is a moment curve $\gamma_i$ so that $\gamma_i \sim_{n,d} \gamma$ in $U_i$. The meaning of $\sim$ will become clear in the following sections). This is the goal of Section XXXX. 
+
+		\item Then it suffices to prove the respective theorem for perturbations of generalized moment curves $\gamma(z) \sim (z^{n_1}, \dots z^{n_d})$. In the case of the Restriction theorem (Theorem XXXX), this corresponds to section WWWW. In the case of the Convolution theorem (Theorem YYYY) this corresponds to section WWWW.
+
+		\item The theorem now follows by the triangle inequality.
+	\end{enumerate}
+
+
+	% subsection outline_of_the_work (end)

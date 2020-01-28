@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{todonotes}
+
+\newcommand{\mbf}[1]{{\bf #1}}
+
+\title{A geometric lemma for complex polynomial curves with applications in harmonic analysis.}
+\author{Jaume de Dios Pont}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defi}{Definition}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+	\maketitle
+	\abstract{ABSTRACT TO BE DONE
+	}
+
+	\tableofcontents
+
+	\todo[inline]{Check what's the most natural way to write a ball of radius r}
+
+	\newpage
+	\section{Introduction} % (fold)
+	\label{sec:introduction}
+	\input{Parts/intro}
+	%section introduction (end)
+
+
+	\newpage
+	\section{The partitioning lemma} % (fold)
+	\label{sec:the_geometry}
+	\input{Parts/geometric_lemma}
+	% section the_geometry (end)
+	\newpage
+	\section{Uniform restriction for polynomial curves} % (fold)
+	\label{sec:the_analysis}
+	\input{Parts/complex_restriction}
+
+	% section the_harmonic_analysis (end)
+	\newpage
+	\section{Convolution estimates for measures on complex curves} % (fold)
+	\label{sec:convolution_estimates_for_measures_on_complex_curves}
+	
+	% section convolution_estimates_for_measures_on_complex_curves (end)
+
+\end{document}
