@@ -96,14 +96,12 @@
 	\end{lemma}
 
 	\begin{proof}
-		The proof is a standard Littlewood-Paley argument, see Stovall again.
+		The proof is a standard Littlewood-Paley argument, using property ZZZ for the support of the Littlewood-Paley blocks, see Stovall again.
 	\end{proof}
 	
 
-	\subsection{Almost orthogonality} % (fold)
-	\label{sub:almost_orthogonality}
 
-	The goal is now to show that we can sum the pieces in the Littlewood-Paley decomposition. The main proposition to do so (essentially Lemma 4.1 in [Stovall]) is:
+	The goal is now to show that we can sum the pieces in the Littlewood-Paley decomposition above. The main proposition to do so (essentially Lemma 4.1 in [Stovall]) is:
 
 	\begin{lemma}
 		There exists $\epsilon(N,d,p)>0$ such that, if $n_1 \le \dots \le n_d$, and $f_i$ is Schwartz and supported in $T_{j,n_i}$ we have:
@@ -114,12 +112,31 @@
 	\end{lemma}
 	
 
-	before proving that, we will prove an auxiliary Lemma (the complexified version of a Lemma by Christ in [STOXXX12]) that will be needed during the interpolation:
+	before proving Lemma XXX, we will prove an auxiliary result (the complex version of a lemma by Christ in [STOXXX12]) that will be needed during the interpolation. We provide an outline here:
+
+	\begin{lemma}
+		
+
 
 	\begin{equation}
-		\int_{\mathbb C^l} \prod_{1\le i\le l}f_i(z_i) \prod_{1\le i<j\le l} g_{i,j}(z_i-z_j) dz \lesssim \prod_{i=1}^l \|f_i\|_p \prod_{1\le i<j\le l} \|g_{i,j}\|_{q,\infty}
-	\end{equation}
+		\int_{\mathbb C^l \sim \mathbb R^{2l}} \prod_{1\le i\le l}f_i(z_i) \prod_{1\le i<j\le l} g_{i,j}(z_i-z_j) dz \lesssim \prod_{i=1}^l \|f_i\|_p \prod_{1\le i<j\le l} \|g_{i,j}\|_{q,\infty}
+	\end{equation} 
+	whenever $ 2 l =  2 l p^{-1} + \frac{2 l (l-1)}{2} q^{-1}$
 
-	\todo[inline]{The proof is exactly the same as in Christ 12}
-	% subsection almost_orthogonality (end)
+	\end{lemma}
+	\begin{proof}
+	The proof starts by studying the set of powers $p_i, q_{i,j}$ with $\sum_{i} p_i^{-1} + \sum_{i,j} q_i^{-1} = l$ for which the estimate
+
+	\begin{equation}
+		\int_{\mathbb C^l \sim \mathbb R^{2l}} \prod_{1\le i\le l}f_i(z_i) \prod_{1\le i<j\le l} g_{i,j}(z_i-z_j) dz \lesssim \prod_{i=1}^l \|f_i\|_{p_i} \prod_{1\le i<j\le l} \|g_{i,j}\|_{q_{i,j}}
+	\end{equation} 
+	holds. We will denote by capital letters the vectors $(p_1, \dots p_l, p_{1,2}, \dots p_{l-1,l})$, which we will think of as elements of the affine subspace $H:=\{\sum_{i} p_i^{-1} + \sum_{i,j} q_i^{-1} = l\}$.
+
+
+	The base cases are $A:=(p_{i}^{-1}=1, q_{i,j}^{-1} = 0)$ and $B:=(p_{i}^{-1}=\delta_{i,1}, q_{i,j}^{-1} = \delta_{i+1,j})$, which are Fubini's theorem. Now, the result is invariant over permutations over all the indices $(i,j)$. This allows us to extend the second base $B$ case to all the cases $B_\sigma$ permutations obtained from those permutations.
+
+	By Riesz-Torin, the result is then true for $A':=\frac 1 {n!} \sum_{\sigma \in S_n} B_\sigma = (p_i = \frac 1 n, q_i = \frac 1 {2n})$. By Riesz-Torin again, the result is true for all the points interpolating $A$ and $A'$. This proves the strong version of the theorem.
+
+	To get the strong case, it suffices to show that all the points joining $A$ and $A'$ lie on the interior of the interpolation polytope (interior with the affine topology on $H$). By convexity again, it suffices to show that $A'$ does. The geometric argument can be seen in Christ (it is exactly the same as in dimension 2). 
+	\end{proof}
 	% subsection almost_orthogonality (end)
